@@ -1,3 +1,9 @@
 [user]
 	email = reinh@reinh.com
 	name = Rein Henrichs
+[alias]
+    br = branch
+    ci = commit
+	st = status
+[color]
+    ui = auto
