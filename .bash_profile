@@ -1,5 +1,4 @@
 export EDITOR=vim
-PS1="[\u@\h:\w \`if [ \$? = 0 ]; then echo \[\e[32m\]✓\[\e[0m\]; else echo \[\e[31m\]Х\[\e[0m\]; fi\`]\\$ "
 
 [ ! -f /etc/git-completion.bash ] || . /etc/git-completion.bash
 
@@ -73,24 +72,9 @@ __git_ps1 ()
                 r="|BISECTING"
             fi
 
-            b="$(git symbolic-ref HEAD 2>/dev/null)" || {
-
-                b="$(
-                case "${GIT_PS1_DESCRIBE_STYLE-}" in
-                (contains)
-                    git describe --contains HEAD ;;
-                (branch)
-                    git describe --contains --all HEAD ;;
-                (describe)
-                    git describe HEAD ;;
-                (* | default)
-                    git describe --exact-match HEAD ;;
-                esac 2>/dev/null)" ||
-
-                b="$(cut -c1-7 "$g/HEAD" 2>/dev/null)..." ||
-                b="unknown"
-                b="($b)"
-            }
+            b="$(git symbolic-ref HEAD 2>/dev/null)" ||
+            b="$(git name-rev --name-only HEAD  2> /dev/null)" ||
+            b="unknown"
         fi
 
         local w
@@ -107,13 +91,11 @@ __git_ps1 ()
             fi
         elif [ "true" = "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]; then
             if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ]; then
-                if [ "$(git config --bool bash.showDirtyState)" != "false" ]; then
-                    git diff --no-ext-diff --quiet --exit-code || w="☢"
-                    if git rev-parse --quiet --verify HEAD >/dev/null; then
-                        git diff-index --cached --quiet HEAD -- || i="+"
-                    else
-                        i="#"
-                    fi
+                git diff --no-ext-diff --quiet --exit-code || w="☢"
+                if git rev-parse --quiet --verify HEAD >/dev/null; then
+                    git diff-index --cached --quiet HEAD -- || i="+"
+                else
+                    i="#"
                 fi
             fi
             if [ -n "${GIT_PS1_SHOWSTASHSTATE-}" ]; then
@@ -135,8 +117,8 @@ __git_ps1 ()
 # set up prefs
 GIT_PS1_SHOWDIRTYSTATE=1
 
-# append git info to the current prompt
-PS1="[\u@\h:\w\[\e[33m\]`__git_ps1`\[\e[0m\]\`if [ \$? = 0 ]; then echo \[\e[32m\]✓\[\e[0m\]; else echo \[\e[31m\]Х\[\e[0m\]; fi\`]\\$ "
+# prompt with git status and last exit status
+PS1="[\u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\]\`if [ \$? = 0 ]; then echo \[\e[32m\]✓\[\e[0m\]; else echo \[\e[31m\]Х\[\e[0m\]; fi\`]\\$ "
 
 # Aliases
 alias git=hub
