@@ -1,9 +1,12 @@
 [user]
-	email = reinh@reinh.com
-	name = Rein Henrichs
+    email = reinh@reinh.com
+    name = Rein Henrichs
 [alias]
     br = branch
     ci = commit
-	st = status
+    st = status
 [color]
     ui = auto
+[github]
+    user = reinh
+    token = 5b09156360000019f4c53d43d116d190
