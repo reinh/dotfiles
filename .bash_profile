@@ -91,7 +91,7 @@ __git_ps1 ()
             fi
         elif [ "true" = "$(git rev-parse --is-inside-work-tree 2>/dev/null)" ]; then
             if [ -n "${GIT_PS1_SHOWDIRTYSTATE-}" ]; then
-                git diff --no-ext-diff --quiet --exit-code || w="☢"
+                git diff --no-ext-diff --quiet --exit-code || w="⚡"
                 if git rev-parse --quiet --verify HEAD >/dev/null; then
                     git diff-index --cached --quiet HEAD -- || i="+"
                 else
@@ -118,7 +118,9 @@ __git_ps1 ()
 GIT_PS1_SHOWDIRTYSTATE=1
 
 # prompt with git status and last exit status
-PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]✓\[\e[0m\]; else echo \[\e[31m\]Х\[\e[0m\]; fi\` \u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\]]\\$ "
+# PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]✓\[\e[0m\]; else echo \[\e[31m\]Х\[\e[0m\]; fi\` \u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\]]\\$ "
+PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]✔\[\e[0m\]; else echo \[\e[31m\]✘\[\e[0m\]; fi\` \u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\]]\\$ "
+
 
 # Aliases
 alias git=hub
