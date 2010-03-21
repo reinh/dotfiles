@@ -31,6 +31,7 @@ set shiftwidth=4
 set smarttab
 
 set splitbelow
+set splitright
 
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%{exists('*rails#statusline')?rails#statusline():''}%{exists('*fugitive#statusline')?fugitive#statusline():''}%#ErrorMsg#%{exists('*SyntasticStatuslineFlag')?SyntasticStatuslineFlag():''}%*%=%-16(\ %l,%c-%v\ %)%P
 
@@ -48,3 +49,10 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 imap <up> <nop>
+
+" Autocommands
+
+augroup puppet
+    autocmd!
+    autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set shiftwidth=4
+augroup END
