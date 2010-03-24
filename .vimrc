@@ -56,3 +56,7 @@ augroup puppet
     autocmd!
     autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set shiftwidth=4
 augroup END
+
+colorscheme vividchalk
+set nu
+set grepprg=ack
