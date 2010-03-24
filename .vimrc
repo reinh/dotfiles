@@ -60,3 +60,7 @@ augroup END
 colorscheme vividchalk
 set nu
 set grepprg=ack
+
+" Maps
+
+map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
