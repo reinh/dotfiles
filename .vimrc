@@ -64,3 +64,5 @@ set grepprg=ack
 " Maps
 
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
+set tags+=../tags,../../tags,../../../tags,../../../../tags
+
