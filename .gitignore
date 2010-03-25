@@ -10,8 +10,10 @@
 *.swp
 
 # Or these files
+.gitconfig
 .bash_history
 .irb_history*
+.mysql_history
 .viminfo
 
 # I will manage this one myself
