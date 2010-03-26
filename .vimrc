@@ -67,4 +67,5 @@ set grepprg=ack
 
 map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 set tags+=../tags,../../tags,../../../tags,../../../../tags
-
+nnoremap <silent> <F8> :TlistToggle<CR>
+let Tlist_Use_Right_Window=1
