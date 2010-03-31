@@ -1,10 +1,17 @@
 silent! call pathogen#runtime_append_all_bundles()
 
 set background=dark
-syntax enable
+set nocompatible      " We're running Vim, not Vi!
+syntax on             " Enable syntax highlighting
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+compiler ruby         " Enable compiler support for ruby
+set expandtab
+set tabstop=2 shiftwidth=2 softtabstop=2
+set autoindent
 set syntax=automatic
 
-filetype plugin indent on
 set backspace=indent,eol,start " make backspace a more flexible
 set backupdir=~/.vim/backup " where to put backup files
 set directory=~/.vim/tmp
@@ -19,19 +26,10 @@ else
 end
 set linespace=0 " don't insert any extra pixel lines
                  " betweens rows
-set list " we do what to show tabs, to ensure we get them
-          " out of my files
-set listchars=tab:>-,trail:- " show tabs and trailing
-set scrolloff=4 " Keep 10 lines (top/bottom) for scope
+set list " show tabs and trailing spaces
+set listchars=tab:>-,trail:- " show tabs and trailing spaces
+set scrolloff=4 " Keep 4 lines (top/bottom) for scope
 set ruler
-
-set autoindent
-
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set smarttab
-
 set splitbelow
 set splitright
 
