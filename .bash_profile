@@ -124,3 +124,4 @@ PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]âœ”\[\e[0m\]; else echo \[\e[31m\]âœ
 
 # Aliases
 alias git=hub
+alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
