@@ -1,5 +1,7 @@
 silent! call pathogen#runtime_append_all_bundles()
 
+colorscheme vividchalk
+
 set background=dark
 set nocompatible      " We're running Vim, not Vi!
 syntax on             " Enable syntax highlighting
@@ -28,7 +30,7 @@ set linespace=0 " don't insert any extra pixel lines
                  " betweens rows
 set list " show tabs and trailing spaces
 set listchars=tab:>-,trail:- " show tabs and trailing spaces
-set scrolloff=4 " Keep 4 lines (top/bottom) for scope
+set scrolloff=3 " Keep 4 lines (top/bottom) for scope
 set ruler
 set splitbelow
 set splitright
@@ -36,8 +38,9 @@ set splitright
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%{exists('*rails#statusline')?rails#statusline():''}%{exists('*fugitive#statusline')?fugitive#statusline():''}%#ErrorMsg#%{exists('*SyntasticStatuslineFlag')?SyntasticStatuslineFlag():''}%*%=%-16(\ %l,%c-%v\ %)%P
 
 set tags+=../tags,../../tags,../../../tags,../../../../tags,tmp/tags
-
 set visualbell
+set nu
+set grepprg=ack " FTW
 
 " Force myself to use hjkl
 map <down> <PageDown>
@@ -45,45 +48,34 @@ map <left> <nop>
 map <right> <nop>
 map <up> <PageUp>
 
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-imap <up> <nop>
-
 " Autocommands
 
-augroup puppet
+augroup PUPPET
     autocmd!
     autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set shiftwidth=4
+    autocmd BufRead ~/code/puppetlabs/puppet/spec/**/*.rb compiler rspec
 augroup END
 
 augroup RUBY
   autocmd!
-  autocmd BufNewFile,BufRead */spec/**/*.rb compiler rspec
-  autocmd BufNewFile,BufRead *spec.rb compiler rspec
-  autocmd BufNewFile,BufRead */test/**/*.rb compiler ruby
-  autocmd BufNewFile,BufRead *test.rb compiler ruby
+  autocmd BufNewFile,BufRead */spec/**/*.rb,*_spec.rb compiler rspec
+  autocmd BufNewFile,BufRead */spec/**/*.rb,*_spec.rb set makeprg="spec -fp"
+  autocmd BufNewFile,BufRead */test/**/*.rb,*_test.rb compiler rubyunit
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 augroup END
 
-colorscheme vividchalk
-set nu
-set grepprg=ack
+" Plugins
 
-" Maps
-
-map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
-set tags+=../tags,../../tags,../../../tags,../../../../tags
-nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_Use_Right_Window=1
-
-" Ruby completion
-
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-
-" Supertab
+nnoremap <silent> <F8> :TlistToggle<CR>
 
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+
+" Maps
+
+map <silent> <Leader>r :!ctags --extra=+f -R *<CR><CR>
+map <Leader>e :e **/*
