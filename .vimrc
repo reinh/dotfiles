@@ -57,6 +57,14 @@ augroup puppet
     autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set shiftwidth=4
 augroup END
 
+augroup RUBY
+  autocmd!
+  autocmd BufNewFile,BufRead */spec/**/*.rb compiler rspec
+  autocmd BufNewFile,BufRead *spec.rb compiler rspec
+  autocmd BufNewFile,BufRead */test/**/*.rb compiler ruby
+  autocmd BufNewFile,BufRead *test.rb compiler ruby
+augroup END
+
 colorscheme vividchalk
 set nu
 set grepprg=ack
@@ -67,3 +75,15 @@ map <Leader>rt :!ctags --extra=+f -R *<CR><CR>
 set tags+=../tags,../../tags,../../../tags,../../../../tags
 nnoremap <silent> <F8> :TlistToggle<CR>
 let Tlist_Use_Right_Window=1
+
+" Ruby completion
+
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+
+" Supertab
+
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
