@@ -1,5 +1,9 @@
+# PATH
+export PATH=$PATH:$HOME/bin
+
 export EDITOR=vim
 
+if [[ -s /Users/reinh/.rvm/scripts/rvm ]] ; then source /Users/reinh/.rvm/scripts/rvm ; fi
 [ ! -f /etc/git-completion.bash ] || . /etc/git-completion.bash
 
 if [ -f `brew --prefix`/etc/bash_completion ]; then
@@ -125,3 +129,4 @@ PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]âœ”\[\e[0m\]; else echo \[\e[31m\]âœ
 # Aliases
 alias git=hub
 alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
+alias mysql_start=/usr/local/Cellar/mysql/5.1.44/share/mysql/mysql.server\ start
