@@ -75,6 +75,14 @@ nnoremap <silent> <F8> :TlistToggle<CR>
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
+inoremap <M-o>       <Esc>o
+inoremap <C-j>       <Down>
+let g:ragtag_global_maps = 1
+
+let g:gist_clip_command = 'pbcopy'
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
 " Maps
 
 map <silent> <Leader>r :!ctags --extra=+f -R *<CR><CR>
