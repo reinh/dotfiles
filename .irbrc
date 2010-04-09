@@ -22,6 +22,7 @@ rescue LoadError
 end
 
 desire 'rubygems'
+desire 'ap'
 
 def IRB.rails_root
   conf[:LOAD_MODULES].to_ary.include?('console_app') &&
