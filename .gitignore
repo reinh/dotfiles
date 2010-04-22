@@ -15,6 +15,7 @@
 .irb_history*
 .mysql_history
 .viminfo
+.lesshst
 
 # I will manage this one myself
 .vim
