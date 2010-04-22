@@ -130,3 +130,6 @@ PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]âœ”\[\e[0m\]; else echo \[\e[31m\]âœ
 alias git=hub
 alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
 alias mysql_start=/usr/local/Cellar/mysql/5.1.44/share/mysql/mysql.server\ start
+
+alias ..=cd\ ..
+alias ...=cd\ ../..
