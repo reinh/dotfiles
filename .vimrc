@@ -53,13 +53,11 @@ map <up> <PageUp>
 augroup PUPPET
     autocmd!
     autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set shiftwidth=4
-    autocmd BufRead ~/code/puppetlabs/puppet/spec/**/*.rb compiler rspec
 augroup END
 
 augroup RUBY
   autocmd!
   autocmd BufNewFile,BufRead */spec/**/*.rb,*_spec.rb compiler rspec
-  autocmd BufNewFile,BufRead */spec/**/*.rb,*_spec.rb set makeprg="spec -fp"
   autocmd BufNewFile,BufRead */test/**/*.rb,*_test.rb compiler rubyunit
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
