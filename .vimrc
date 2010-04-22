@@ -85,3 +85,5 @@ let g:gist_open_browser_after_post = 1
 
 map <silent> <Leader>r :!ctags --extra=+f -R *<CR><CR>
 map <Leader>e :e **/*
+
+map <Leader>p :w<CR>:!markdown < % > %.html && open %.html<CR><CR>
