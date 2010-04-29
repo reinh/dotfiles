@@ -133,3 +133,7 @@ alias mysql_start=/usr/local/Cellar/mysql/5.1.44/share/mysql/mysql.server\ start
 
 alias ..=cd\ ..
 alias ...=cd\ ../..
+
+alias rscreen=screen\ -c\ ~/.rails_screenrc
+
+alias itunes_ssh='ssh -L 3689:home.reinh.com:3689 -N home.reinh.com'
