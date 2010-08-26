@@ -44,8 +44,8 @@ set grepprg=ack " FTW
 
 augroup PUPPET
     autocmd!
-    autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set shiftwidth=4
-augroup END
+    autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set sw=2 ts=2 sts=2
+augroup END"
 
 augroup RUBY
   autocmd!
