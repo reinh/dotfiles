@@ -1,0 +1,6 @@
+source /Users/reinh/.screenrc
+
+screen -t imap      0 offlineimap
+screen -t rss       3 raggle
+screen -t irc       2 irc
+screen -t sup       1 sup
