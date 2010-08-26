@@ -19,3 +19,12 @@
 
 # I will manage this one myself
 .vim
+.offlineimaprc
+.msmtprc
+.Xauthority
+.emacs.d/
+.fastri-index
+.htoprc
+.ido.last
+.octave_hist
+.recentf
