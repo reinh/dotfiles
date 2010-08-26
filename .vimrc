@@ -25,8 +25,7 @@ if has("mac")
 else
   set lazyredraw
 end
-set linespace=0 " don't insert any extra pixel lines
-                 " betweens rows
+set linespace=0 " don't insert any extra pixel lines betweens rows
 set list " show tabs and trailing spaces
 set listchars=tab:>-,trail:- " show tabs and trailing spaces
 set scrolloff=3 " Keep 4 lines (top/bottom) for scope
