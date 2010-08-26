@@ -1,5 +1,7 @@
 export PATH=$HOME/bin:$PATH
 export EDITOR=vim
+# export PAGER='col -b | vim -c "map q :q!<CR>" -R -'
+
 
 if [[ -s /Users/reinh/.rvm/scripts/rvm ]] ; then source /Users/reinh/.rvm/scripts/rvm ; fi
 [ ! -f /etc/git-completion.bash ] || . /etc/git-completion.bash
