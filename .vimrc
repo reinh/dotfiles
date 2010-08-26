@@ -77,7 +77,67 @@ let NERDSpaceDelims = 1
 
 " Maps
 
-map <silent> <Leader>r :!ctags --extra=+f -R *<CR><CR>
-map <Leader>e :e **/*
+let mapleader = ","
 
-map <Leader>p :w<CR>:!markdown < % > %.html && open %.html<CR><CR>
+map <silent> <Leader>r :!ctags --extra=+f -R *<CR><CR>
+map <Leader>s :Rake<CR>
+map <Leader>c :.Rake<CR>
+map <Leader>, <plug>NERDCommenterToggle
+
+nmap <Leader>e :e **/
+cmap <Leader>e **/
+
+augroup MARKDOWN
+  autocmd!
+  autocmd FileType markdown,man map <Leader>p :w<CR>:!markdown < % > %.html && open %.html<CR><CR>
+  autocmd FileType markdown,man map <Leader>h1 :.g/.\+/copy. <Bar> s/./=/g <CR>
+  autocmd FileType markdown,man map <Leader>h2 :.g/.\+/copy. <Bar> s/./-/g <CR>
+augroup END
+
+" Map ctrl-movement keys to window switching
+map <C-k> <C-w><Up>
+map <C-j> <C-w><Down>
+map <C-l> <C-w><Right>
+map <C-h> <C-w><Left>
+
+" Switch to alternate file
+map <C-Tab> :bnext<cr>
+map <C-S-Tab> :bprevious<cr>
+
+" Puppet
+
+"puppet test switching - may want to encapsulate this for other projects if I find I need that
+function! GoToTheImplementation()
+    if match( expand("%:p"), "spec/unit" ) > -1
+        let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
+        let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
+        exec(":e ". imp_file)
+    endif
+endfunc
+
+function! GoToTheTest()
+    if match( expand("%:p"), "lib/puppet" ) > -1
+        let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
+        let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
+        exec(":e ". test_file)
+    endif
+endfunc
+
+map  <leader>gt      :call GoToTheTest()<CR>
+map! <leader>gt <ESC>:call GoToTheTest()<CR>i
+map  <leader>gi      :call GoToTheImplementation()<CR>
+map! <leader>gi <ESC>:call GoToTheImplementation()<CR>i
+
+com! Todo :pedit! ~/code/puppetlabs/todo.txt
+
+" Display the syn/hi group of the word under the cursor
+com! SynID echo synIDattr(synID(line("."), col("."), 1), "name") 
+
+" allow a more natural style of line editing in :ex mode
+cnoremap <C-A> <Home>
+cnoremap <C-E> <End>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+
