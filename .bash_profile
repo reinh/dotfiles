@@ -133,8 +133,12 @@ ackl() {
 }
 
 # Aliases
+
+alias sc=script/console
+
 alias git=hub
 alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
+
 alias mysql_start=/usr/local/Cellar/mysql/5.1.44/share/mysql/mysql.server\ start
 
 alias ..=cd\ ..
