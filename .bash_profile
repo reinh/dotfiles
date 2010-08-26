@@ -149,3 +149,5 @@ alias rscreen=screen\ -c\ ~/.rails_screenrc
 alias itunes_ssh='ssh -L 3689:home.reinh.com:3689 -N home.reinh.com'
 
 alias google=ack
+
+alias less='less -R'
