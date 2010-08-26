@@ -1,6 +1,4 @@
-# PATH
-export PATH=$PATH:$HOME/bin
-
+export PATH=$HOME/bin:$PATH
 export EDITOR=vim
 
 if [[ -s /Users/reinh/.rvm/scripts/rvm ]] ; then source /Users/reinh/.rvm/scripts/rvm ; fi
