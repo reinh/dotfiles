@@ -1,5 +1,6 @@
 startup_message off
 
+defscrollback 5000
 escape ^Gg # use ctrl-z instead of ctrl-a
 
 hardstatus on
