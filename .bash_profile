@@ -123,7 +123,7 @@ GIT_PS1_SHOWDIRTYSTATE=1
 
 # prompt with git status and last exit status
 # PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]✓\[\e[0m\]; else echo \[\e[31m\]Х\[\e[0m\]; fi\` \u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\]]\\$ "
-PS1="[\`if [ \$? = 0 ]; then echo \[\e[32m\]✔\[\e[0m\]; else echo \[\e[31m\]✘\[\e[0m\]; fi\` \u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\]]\\$ "
+export PS1="╔[\`if [ \$? = 0 ]; then echo \[\e[32m\]✔\[\e[0m\]; else echo \[\e[31m\]✘\[\e[0m\]; fi\` \u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\] \$(~/.rvm/bin/rvm-prompt)]\n╚\\$ "
 
 
 # Aliases
