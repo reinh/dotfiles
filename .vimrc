@@ -40,12 +40,6 @@ set visualbell
 set nu
 set grepprg=ack " FTW
 
-" Force myself to use hjkl
-map <down> <PageDown>
-map <left> <nop>
-map <right> <nop>
-map <up> <PageUp>
-
 " Autocommands
 
 augroup PUPPET
