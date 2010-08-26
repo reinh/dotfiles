@@ -126,6 +126,12 @@ GIT_PS1_SHOWDIRTYSTATE=1
 export PS1="╔[\`if [ \$? = 0 ]; then echo \[\e[32m\]✔\[\e[0m\]; else echo \[\e[31m\]✘\[\e[0m\]; fi\` \u@\h:\w\[\e[33m\]\`__git_ps1\`\[\e[0m\] \$(~/.rvm/bin/rvm-prompt)]\n╚\\$ "
 
 
+# Functions
+
+ackl() {
+  exec ack --color "$@" | less -R
+}
+
 # Aliases
 alias git=hub
 alias vim=/Applications/MacVim.app/Contents/MacOS/Vim
