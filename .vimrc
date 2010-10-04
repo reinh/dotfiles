@@ -87,6 +87,8 @@ map <Leader>, <plug>NERDCommenterToggle
 nmap <Leader>e :e **/
 cmap <Leader>e **/
 
+nmap <Leader>n :if &nu <bar> set nonu rnu <bar> else <bar> set nu nornu <bar> endif<CR>
+
 augroup MARKDOWN
   autocmd!
   autocmd FileType markdown,man map <Leader>p :w<CR>:!markdown < % > %.html && open %.html<CR><CR>
