@@ -25,7 +25,7 @@ if has("mac")
 else
   set lazyredraw
 end
-set linespace=0 " don't insert any extra pixel lines betweens rows
+set linespace=2 " don't insert any extra pixel lines betweens rows
 set list " show tabs and trailing spaces
 set listchars=tab:>- " show tabs
 set scrolloff=3 " Keep 4 lines (top/bottom) for scope
@@ -103,32 +103,6 @@ map <C-h> <C-w><Left>
 map <C-Tab> :bnext<cr>
 map <C-S-Tab> :bprevious<cr>
 
-" Puppet
-
-"puppet test switching - may want to encapsulate this for other projects if I find I need that
-function! GoToTheImplementation()
-    if match( expand("%:p"), "spec/unit" ) > -1
-        let imp_file = substitute(expand("%:p"), "spec/unit", "lib/puppet", "")
-        let imp_file = substitute(imp_file, '\(\w\+\)_spec.rb', '\1.rb', '')
-        exec(":e ". imp_file)
-    endif
-endfunc
-
-function! GoToTheTest()
-    if match( expand("%:p"), "lib/puppet" ) > -1
-        let test_file = substitute(expand("%:p"), "lib/puppet", "spec/unit", "")
-        let test_file = substitute(test_file, '\(\w\+\).rb', '\1_spec.rb', '')
-        exec(":e ". test_file)
-    endif
-endfunc
-
-map  <leader>gt      :call GoToTheTest()<CR>
-map! <leader>gt <ESC>:call GoToTheTest()<CR>i
-map  <leader>gi      :call GoToTheImplementation()<CR>
-map! <leader>gi <ESC>:call GoToTheImplementation()<CR>i
-
-com! Todo :pedit! ~/code/puppetlabs/todo.txt
-
 " Display the syn/hi group of the word under the cursor
 com! SynID echo synIDattr(synID(line("."), col("."), 1), "name") 
 
@@ -140,3 +114,21 @@ cnoremap <C-B> <Left>
 cnoremap <Esc>b <S-Left>
 cnoremap <Esc>f <S-Right>
 
+map <F1> <nop>
+imap <F1> <nop>
+
+" highlight end of line whitespace as Error
+hi link ExtraWhitespace Error
+au BufNewFile,BufRead,InsertLeave * match ExtraWhitespace /\s\+$/
+
+" except the line I am typing on
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+
+" Tabularize
+
+command! Trim %s/\v\s+$//
+command! Reload source ~/.vimrc | source ~/.gvimrc
+
+" Highlight filetype
+" Using highlight library
+command! -range=% Highlight exec "w !highlight -S " . &ft . " -R | pbcopy"
