@@ -10,7 +10,6 @@ filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
 set expandtab
-set tabstop=2 shiftwidth=2 softtabstop=2
 set autoindent
 set syntax=automatic
 
@@ -28,7 +27,7 @@ else
 end
 set linespace=0 " don't insert any extra pixel lines betweens rows
 set list " show tabs and trailing spaces
-set listchars=tab:>-,trail:- " show tabs and trailing spaces
+set listchars=tab:>- " show tabs
 set scrolloff=3 " Keep 4 lines (top/bottom) for scope
 set ruler
 set splitbelow
@@ -38,24 +37,21 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockSt
 
 set tags+=../tags,../../tags,../../../tags,../../../../tags,tmp/tags
 set visualbell
-set nu
+set nu " line numbers
 set grepprg=ack " FTW
 
 " Autocommands
 
-augroup PUPPET
-    autocmd!
-    autocmd BufRead ~/code/puppetlabs/puppet/**/*.rb set sw=2 ts=2 sts=2
-augroup END"
-
 augroup RUBY
   autocmd!
-  autocmd BufNewFile,BufRead */spec/**/*.rb,*_spec.rb compiler rspec
-  autocmd BufNewFile,BufRead */test/**/*.rb,*_test.rb compiler rubyunit
-  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd BufNewFile,BufRead */spec/**/*.rb,*_spec.rb compiler rspec " set the rspec compiler
+  autocmd BufNewFile,BufRead */test/**/*.rb,*_test.rb compiler rubyunit " set the test unit compiler
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete " use rubycomplete
   autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
   autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-  autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+  " autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+  autocmd FileType ruby       set fdm=syntax fdl=99 " fold based on syntax, default fully open
+  autocmd FileType ruby       set tabstop=2 shiftwidth=2 softtabstop=2
 augroup END
 
 " Plugins
@@ -64,7 +60,7 @@ let Tlist_Use_Right_Window=1
 nnoremap <silent> <F8> :TlistToggle<CR>
 
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
+" let g:SuperTabContextDefaultCompletionType = "<c-x><c-o>"
 
 inoremap <M-o>       <Esc>o
 inoremap <C-j>       <Down>
