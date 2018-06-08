@@ -19,7 +19,6 @@ fi
 . ~/.zsh/keybinds.zsh
 . ~/.zsh/history.zsh
 . ~/.zsh/options.zsh
-. ~/.zsh/prompt.zsh
 . ~/.zsh/nvm.zsh
 
 [[ $PROFILE_STARTUP = 1 ]] && zprof
