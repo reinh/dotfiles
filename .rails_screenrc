@@ -1,9 +1,0 @@
-source /Users/reinh/.screenrc
-
-# Rails screens
-split
-screen -t server      3 ./script/server
-screen -t autospec    4 ./script/autospec
-focus
-screen -t shell1      0
-
