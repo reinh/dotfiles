@@ -3,6 +3,7 @@ PROFILE_STARTUP=0
 
 GITHUB_USER=reinh
 
+# TODO: Seriously, stop being lazy and fix this.
 if [[ -f ~/.secrets.zsh ]]; then
     . ~/.secrets.zsh
 else
