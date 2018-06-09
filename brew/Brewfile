@@ -1,1 +1,40 @@
+cask_args appdir: '/Applications'
+tap 'homebrew/cask'
+tap 'railwaycat/emacsmacport'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+
+brew 'coreutils'
+brew 'exa'
+brew 'fzf'
+brew 'git'
+brew 'htop'
+brew 'neovim'
+brew 'nvm'
+brew 'ripgrep'
+brew 'shellcheck'
+brew 'tmux'
+brew 'watch'
+brew 'watchman'
+# brew 'yarn', args: %w(--without-node)
+brew 'youtube-dl'
+brew 'z'
 brew 'zsh'
+brew 'zsh-lovers'
+
+cask '1password'
+cask 'alfred'
+cask 'amethyst'
+cask 'dropbox'
+cask 'dungeon-crawl-stone-soup-tiles'
+cask 'emacs-mac'
+cask 'fantastical'
+cask 'font-iosevka'
+cask 'iterm2'
+cask 'karabiner-elements'
+cask 'mpv'
+cask 'slack-beta'
+
+# Local Variables:
+# mode: ruby
+# End:
