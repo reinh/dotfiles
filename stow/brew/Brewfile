@@ -11,6 +11,7 @@ brew "jq"
 brew "pandoc"
 brew 'awscli'
 brew 'coreutils'
+brew 'dos2unix'
 brew 'exa'
 brew 'fzf'
 brew 'git'
