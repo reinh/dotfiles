@@ -1,5 +1,5 @@
 STOW_OPTS="-v"
-STOW_TARGETS="zsh emacs tmux git brew"
+STOW_TARGETS="zsh emacs tmux git brew dcss"
 
 default: install
 
