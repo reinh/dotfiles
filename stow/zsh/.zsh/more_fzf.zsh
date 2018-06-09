@@ -60,7 +60,7 @@ tm() {
 #   bb install
 #   bb info
 bzf() {
-    local inst=$(brew search | fzf -m)
+    local inst=$(brew search | fzf -m --preview 'brew info {}')
 
     if [[ $inst ]]; then
         for prog in $(echo $inst);

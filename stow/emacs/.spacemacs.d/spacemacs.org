@@ -1,0 +1,126 @@
+#+TITLE: Spacemacs tangled user configuration
+#+STARTUP: headlines
+#+STARTUP: nohideblocks
+#+STARTUP: noindent
+#+OPTIONS: toc:4 h:4
+#+PROPERTY: header-args:emacs-lisp :comments link
+
+* Introduction
+  This is a tangled user-init and user-config file for spacemacs. Place the
+  following code in your =~/.spacemacs.d/init.el= file.
+
+** init.el  
+   
+#+BEGIN_SRC emacs-lisp :tangle no
+  (defun dotspacemacs/user-init ()
+    ;; tangle without actually loading org
+    (let ((src (concat dotspacemacs-directory "spacemacs.org"))
+          (ui (concat dotspacemacs-directory "user-init.el"))
+          (uc (concat dotspacemacs-directory "user-config.el")))
+      (when (or (file-newer-than-file-p src ui) (file-newer-than-file-p src uc))
+        (call-process
+         (concat invocation-directory invocation-name)
+         nil nil t
+         "-q" "--batch" "--eval" "(require 'ob-tangle)"
+         "--eval" (format "(org-babel-tangle-file \"%s\")" src)))
+      (load-file ui)))
+
+  (defun dotspacemacs/user-config ()
+    (load-file (concat dotspacemacs-directory "user-config.el")))
+
+#+END_SRC
+
+** spacemacs.org  
+   
+To add configuration options before Spacemacs loads, insert the following kind
+of src block in your spacemacs.org file
+
+#+BEGIN_SRC emacs-lisp :tangle user-init.el
+#+END_SRC
+
+Alternatively, if the block should be loaded after Spacemacs loads, insert the
+following test block
+
+#+BEGIN_SRC emacs-lisp :tangle user-config.el
+  (server-start)
+
+  (setq create-lockfiles nil)
+
+  (setq org-journal-dir "~/org/journal/")
+  (setq org-refile-targets '((org-agenda-files :maxlevel . 1)))
+  (setq org-outline-path-complete-in-steps nil) ; Refile in a single go
+  (setq org-refile-use-outline-path 'file)      ; Show full paths for refiling
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+  (setq org-log-into-drawer t)
+
+  (with-eval-after-load 'org (setq org-startup-indented nil))
+
+  (mac-auto-operator-composition-mode)
+
+  (with-eval-after-load 'org
+    (setq org-confirm-babel-evaluate nil)
+
+    (org-babel-do-load-languages
+     'org-babel-load-languages
+     '((shell      . t)
+       (js         . t)
+       (http       . t)
+       (emacs-lisp . t)
+       (clojure    . t)
+       (python     . t)
+       (dot        . t)
+       (ditaa      . t)
+       (ruby       . t)
+       (plantuml   . t)
+       )))
+
+  ;; JS indentation
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+
+  (setq standardfmt-command "standard")
+
+
+  ;; Magit
+  (global-git-commit-mode t)
+
+  ;; Code folding
+  (add-hook 'ruby-mode-hook
+            (lambda () (hs-minor-mode)))
+
+  (eval-after-load "hideshow"
+    '(add-to-list 'hs-special-modes-alist
+                  `(ruby-mode
+                    ,(rx (or "def" "class" "module" "do" "{" "[")) ; Block start
+                    ,(rx (or "}" "]" "end"))                       ; Block end
+                    ,(rx (or "#" "=begin"))                        ; Comment start
+                    ruby-forward-sexp nil)))
+#+END_SRC
+
+* Helper Functions
+
+** Yasnippet creation
+
+To help with creation of your text blocks, there are two snippets defined in the
+local snippet directory =~/.spacemacs.d/snippets/org-mode/= folder.
+
+To tangle to the =user-init= file, type =ui=, alternatively =uc= to tangle the =user-config= file.
+
+** Find this file
+   Create binding to spacemacs.org file
+
+#+BEGIN_SRC emacs-lisp :tangle user-config.el
+  (defun spacemacs/find-config-file ()
+    (interactive)
+    (find-file (concat dotspacemacs-directory "/spacemacs.org")))
+
+  (spacemacs/set-leader-keys "fec" 'spacemacs/find-config-file)
+
+#+END_SRC

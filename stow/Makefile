@@ -1,0 +1,14 @@
+stow_opts = --verbose --ignore='.DS_Store'
+stow_dirs = $(wildcard */)
+
+.PHONY: stow restow delete
+
+stow: Makefile $(stow_dirs)
+	stow --target $(HOME) $(stow_opts) $(stow_dirs)
+
+restow: Makefile $(stow_dirs)
+	stow --target $(HOME) $(stow_opts) --restow $(stow_dirs)
+
+# Do this *before* moving to another directory.
+delete: Makefile $(stow_dirs)
+	stow --target $(HOME) $(stow_opts) --delete $(stow_dirs)

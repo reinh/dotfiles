@@ -1,25 +1,48 @@
-STOW_OPTS="-v"
-STOW_TARGETS="zsh emacs tmux git brew dcss"
+BREW = /usr/local/bin/brew
+STOW = /usr/local/bin/stow
+ZGEN = ~/.zgen
+EMACS_D = ~/.emacs.d
 
 default: install
 
-install: prepare stow
+.PHONY: install
+install: deps stow brew-bundle
 
-prepare: remove_dsstore install_brew install_stow install_zgen
+# Stow
 
-install_brew:
-	@${PWD}/install_homebrew.sh
+.PHONY: stow restow delete
+stow: Makefile stow/Makefile deps
+	@$(MAKE) -C stow stow
 
-install_stow:
-	@command -v stow >/dev/null || brew install stow
+restow: Makefile stow/Makefile deps
+	@$(MAKE) -C stow restow
 
-install_zgen:
-	@[[ -d ${HOME}/.zgen ]] || git clone https://github.com/tarjoilija/zgen.git ${HOME}/.zgen
+delete: Makefile stow/Makefile deps
+	@$(MAKE) -C stow delete
 
-remove_dsstore:
-	@find ${PWD} -name '.DS_Store' -exec rm {} \;
+# Deps
 
-stow:
-	@for target in ${STOW_TARGETS}; do \
-		stow ${STOW_OPTS} $$target ; \
-	done
+.PHONY: deps
+deps: $(BREW) $(STOW) $(ZGEN)
+
+# TRAVIS=true installs homebrew without user interaction
+$(BREW):
+	curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install | TRAVIS=true ruby
+
+$(STOW): $(BREW)
+	$(BREW) install stow
+
+$(ZGEN):
+	git clone https://github.com/tarjoilija/zgen.git $@
+
+.PHONY: brew-bundle
+brew-bundle: ~/.BrewedAt
+
+# An empty target used to prevent unnecessary brew bundling.
+# See https://www.gnu.org/software/make/manual/make.html#Empty-Targets
+~/.BrewedAt: ~/Brewfile
+	$(BREW) bundle --file=~/Brewfile | grep -v '^Using'
+	@touch $@
+
+$(EMACS_D):
+	git clone --depth 1 -b develop 'https://github.com/syl20bnr/spacemacs' $@
