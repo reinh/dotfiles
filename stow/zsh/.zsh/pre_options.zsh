@@ -13,3 +13,6 @@ export _Z_EXCLUDE_DIRS=(
 )
 
 export FZFZ_EXCLUDE_PATTERN='\.git|Downloads|Volumes|Applications|Maildir|Dropbox|node_modules|Production|Share|tmp|common:'
+
+# https://github.com/denysdovhan/spaceship-prompt/issues/343
+export SPACESHIP_DIR_TRUNC_REPO=false
