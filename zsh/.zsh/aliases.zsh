@@ -1,3 +1,4 @@
+
 # exa
 alias ll='exa -la'
 
@@ -22,3 +23,9 @@ alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --r
 alias _='sudo'
 alias please='sudo'
 alias computer,='sudo'
+
+# rsync
+alias rsync-copy="rsync -avz --progress -h"
+alias rsync-move="rsync -avz --progress -h --remove-source-files"
+alias rsync-update="rsync -avzu --progress -h"
+alias rsync-synchronize="rsync -avzu --delete --progress -h"

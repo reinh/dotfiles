@@ -12,13 +12,17 @@ fi
 
 . ~/.zsh/pre_options.zsh
 . ~/.zsh/zgen_config.zsh
-. ~/.zsh/load_things.zsh
+. ~/.zsh/options.zsh
+
 . ~/.zsh/aliases.zsh
 . ~/.zsh/completion.zsh
+. ~/.zsh/directories.zsh
+. ~/.zsh/extract.zsh
 . ~/.zsh/functions.zsh
-. ~/.zsh/keybinds.zsh
 . ~/.zsh/history.zsh
-. ~/.zsh/options.zsh
+. ~/.zsh/keybinds.zsh
+. ~/.zsh/load_things.zsh
+. ~/.zsh/more_fzf.zsh
 . ~/.zsh/nvm.zsh
 
 [[ $PROFILE_STARTUP = 1 ]] && zprof
