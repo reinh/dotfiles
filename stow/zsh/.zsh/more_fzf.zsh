@@ -54,12 +54,12 @@ tm() {
     session=$(tmux list-sessions -F "#{session_name}" 2>/dev/null | fzf --exit-0) &&  tmux $change -t "$session" || echo "No sessions found."
 }
 
-# Act on (one or multiple) selected brew
-# using "brew search" as source input
-# Example:
-#   bb install
-#   bb info
-bzf() {
+# Act on (one or multiple) selected brew using "brew search" as source input.
+# Takes the brew command to execute on the selected package(s). Shows brew info
+# in a preview window. Allows multiple select.
+#
+# Example: bf install
+bf() {
     local inst=$(brew search | fzf -m --preview 'brew info {}')
 
     if [[ $inst ]]; then
