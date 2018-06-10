@@ -55,7 +55,8 @@ following test block
 
   (with-eval-after-load 'org (setq org-startup-indented nil))
 
-  (mac-auto-operator-composition-mode)
+  (if (fboundp 'mac-auto-operator-composition-mode)
+      (mac-auto-operator-composition-mode))
 
   (with-eval-after-load 'org
     (setq org-confirm-babel-evaluate nil)
