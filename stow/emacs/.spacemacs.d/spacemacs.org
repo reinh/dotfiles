@@ -36,6 +36,7 @@ To add configuration options before Spacemacs loads, insert the following kind
 of src block in your spacemacs.org file
 
 #+BEGIN_SRC emacs-lisp :tangle user-init.el
+  (setenv "RIPGREP_CONFIG_PATH" "/Users/reinh/.ripgreprc")
 #+END_SRC
 
 Alternatively, if the block should be loaded after Spacemacs loads, insert the
