@@ -20,7 +20,10 @@ setopt pushdminus
 # Edit with emacs
 export VISUAL="emacsclient"
 export EDITOR="emacsclient"
+export ALTERNATE_EDITOR=""
 
 ## pager
 export PAGER='less'
 export LESS='-R'
+
+export RIPGREP_CONFIG_PATH=~/.ripgreprc

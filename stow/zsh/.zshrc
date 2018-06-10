@@ -17,6 +17,7 @@ fi
 . ~/.zsh/aliases.zsh
 . ~/.zsh/completion.zsh
 . ~/.zsh/directories.zsh
+. ~/.zsh/dotenv.zsh
 . ~/.zsh/extract.zsh
 . ~/.zsh/functions.zsh
 . ~/.zsh/history.zsh

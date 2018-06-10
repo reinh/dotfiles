@@ -8,7 +8,8 @@ if ! zgen saved; then
     zgen load zsh-users/zsh-completions src
     zgen load andrewferrier/fzf-z
     zgen load denysdovhan/spaceship-prompt spaceship
-    zgen load robbyrussell/oh-my-zsh lib/directories.zsh
+
+    zgen oh-my-zsh plugins/rake-fast
 
     zgen save
 fi
