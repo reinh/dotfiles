@@ -1,13 +1,13 @@
 #+TITLE: Spacemacs tangled user configuration
 #+STARTUP: headlines
 #+STARTUP: nohideblocks
-#+STARTUP: noindent
+#+STARTUP: indent
 #+OPTIONS: toc:4 h:4
 #+PROPERTY: header-args:emacs-lisp :comments link
 
 * Introduction
-  This is a tangled user-init and user-config file for spacemacs. Place the
-  following code in your =~/.spacemacs.d/init.el= file.
+This is a tangled user-init and user-config file for spacemacs. Place the
+following code in your =~/.spacemacs.d/init.el= file.
 
 ** init.el  
    
@@ -114,7 +114,7 @@ local snippet directory =~/.spacemacs.d/snippets/org-mode/= folder.
 To tangle to the =user-init= file, type =ui=, alternatively =uc= to tangle the =user-config= file.
 
 ** Find this file
-   Create binding to spacemacs.org file
+Create binding to spacemacs.org file
 
 #+BEGIN_SRC emacs-lisp :tangle user-config.el
   (defun spacemacs/find-config-file ()
