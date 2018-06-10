@@ -67,3 +67,18 @@ bf() {
         do; brew $1 $prog; done;
     fi
 }
+
+
+# Act on (one or multiple) selected brew casks using "brew cask search" as
+# source input. Takes the brew cask command to execute on the selected
+# package(s). Shows brew cask info in a preview window. Allows multiple select.
+#
+# Example: bcf install
+bcf() {
+    local inst=$(brew cask search | fzf -m --preview 'brew cask info {}')
+
+    if [[ $inst ]]; then
+        for prog in $(echo $inst);
+        do; brew cask $1 $prog; done;
+    fi
+}
