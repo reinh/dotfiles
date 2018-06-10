@@ -42,8 +42,6 @@ Alternatively, if the block should be loaded after Spacemacs loads, insert the
 following test block
 
 #+BEGIN_SRC emacs-lisp :tangle user-config.el
-  (server-start)
-
   (setq create-lockfiles nil)
 
   (setq org-journal-dir "~/org/journal/")
