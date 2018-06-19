@@ -1,3 +1,12 @@
+# Platform detection (NOTE: I don't support windows)
+ifndef PLATFORM
+  ifeq ($(shell uname),Darwin)
+    PLATFORM=osx
+  else
+    PLATFORM=linux
+  endif
+endif
+
 BREW = /usr/local/bin/brew
 STOW = /usr/local/bin/stow
 ZGEN = ~/.zgen
@@ -51,3 +60,6 @@ $(EMACS_D):
 $(TPM):
 	git clone 'https://github.com/tmux-plugins/tpm' $@ && \
 	~/.tmux/plugins/tpm/bin/install_plugins
+
+.PHONY: linux
+linux: $(ZGEN) $(EMACS_D) $(TPM) stow
