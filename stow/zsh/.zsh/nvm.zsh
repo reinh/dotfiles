@@ -1,7 +1,3 @@
 export NVM_DIR="$HOME/.nvm"
-
-# Lazy load nvm
-function nvm() {
-    . "/usr/local/opt/nvm/nvm.sh"
-    nvm $@
-}
+NVM_SH=/usr/local/opt/nvm/nvm.sh
+[ -s "$NVM_SH" ] && \. "$NVM_SH"

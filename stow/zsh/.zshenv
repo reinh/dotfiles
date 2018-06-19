@@ -41,16 +41,11 @@ if [[ "$OSTYPE" == darwin* ]]; then
     export BROWSER='open'
 fi
 
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # RUST
 command -v rustc >/dev/null && export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
 # rustup
 fpath+=~/.zfunc
-
 
 # GOLANG
 export GOPATH=$HOME/src/go
