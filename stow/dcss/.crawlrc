@@ -235,7 +235,7 @@ autofight_caught = true
 autofight_wait = false
 auto_switch = true
 
-automagic_enable = true
+automagic_enable = false
 automagic_slot = z
 automagic_stop = 75
 
