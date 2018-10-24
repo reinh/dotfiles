@@ -9,8 +9,8 @@
 This is a tangled user-init and user-config file for spacemacs. Place the
 following code in your =~/.spacemacs.d/init.el= file.
 
-** init.el  
-   
+** init.el
+
 #+BEGIN_SRC emacs-lisp :tangle no
   (defun dotspacemacs/user-init ()
     ;; tangle without actually loading org
@@ -30,8 +30,8 @@ following code in your =~/.spacemacs.d/init.el= file.
 
 #+END_SRC
 
-** spacemacs.org  
-   
+** spacemacs.org
+
 To add configuration options before Spacemacs loads, insert the following kind
 of src block in your spacemacs.org file
 
@@ -103,9 +103,40 @@ following test block
                     ,(rx (or "#" "=begin"))                        ; Comment start
                     ruby-forward-sexp nil)))
 #+END_SRC
+* JavaScript
+
+#+BEGIN_SRC emacs-lisp :tangle user-config.el
+  (setq js2-strict-missing-semi-warning nil)
+  (setq js2-missing-semi-one-line-override t)
+#+END_SRC
+
+* Org and LaTeX
+
+#+BEGIN_SRC emacs-lisp :tangle user-config.el
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+
+  (setq org-ref-default-bibliography '("~/Papers/references.bib")
+        org-ref-pdf-directory "~/Papers/"
+        org-ref-bibliography-notes "~/Papers/notes.org"
+        bibtex-completion-notes-path "~/Papers/notes.org"
+        bibtex-completion-bibliography '("~/Papers/references.bib")
+        bibtex-completion-library-path '("~/Papers")
+
+        bibtex-completion-pdf-open-function
+        (lambda (fpath)
+          (call-process "open" nil 0 nil "-a" "/Applications/Skim.app" fpath))
+
+        org-ref-open-pdf-function
+        (lambda (fpath)
+          (call-process "open" nil 0 nil "-a" "/Applications/Skim.app" fpath)))
+#+END_SRC
+
+* Git
+#+BEGIN_SRC emacs-lisp :tangle user-init.el
+  (setq-default git-magit-status-fullscreen t)
+#+END_SRC
 
 * Helper Functions
-
 ** Yasnippet creation
 
 To help with creation of your text blocks, there are two snippets defined in the
@@ -123,4 +154,20 @@ Create binding to spacemacs.org file
 
   (spacemacs/set-leader-keys "fec" 'spacemacs/find-config-file)
 
+#+END_SRC
+* Troubleshooting
+** goto definition
+
+See https://github.com/syl20bnr/spacemacs/issues/9873#issuecomment-359388667
+
+#+BEGIN_SRC emacs-lisp :tangle user-config.el
+(setq spacemacs-default-jump-handlers
+  (remove 'evil-goto-definition spacemacs-default-jump-handlers))
+#+END_SRC
+** gls
+#+BEGIN_SRC emacs-lisp :tangle user-config.el
+  (let ((gls (executable-find "gls")))
+    (when gls
+      (setq insert-directory-program gls
+            dired-listing-switches "-aBhl --group-directories-first")))
 #+END_SRC
