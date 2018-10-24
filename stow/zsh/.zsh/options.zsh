@@ -25,5 +25,6 @@ export ALTERNATE_EDITOR=""
 ## pager
 export PAGER='less'
 export LESS='-R'
+export LESSOPEN="|/usr/local/bin/lesspipe.sh %s" LESS_ADVANCED_PREPROCESSOR=1
 
 export RIPGREP_CONFIG_PATH=~/.ripgreprc

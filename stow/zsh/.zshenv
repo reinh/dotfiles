@@ -21,14 +21,13 @@ unset path_file
 
 # Set the list of directories that Zsh searches for programs.
 path=(
+    ~/.nodenv/shims
+    ~/bin
+    ~/.cargo/bin
     ~/.local/bin
     /usr/local/{bin,sbin}
     /usr/{bin,sbin}
     /{bin,sbin}
-    ~/bin
-    /usr/local/Cellar/node/7.10.0/bin
-    ~/.cargo/bin
-    ~/.local/bin
     $path
     /opt/X11/bin
     /usr/local/opt/texinfo/bin

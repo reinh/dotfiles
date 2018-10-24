@@ -24,6 +24,7 @@ alias please='sudo'
 alias computer,='sudo'
 
 # rsync
+alias rcp="rsync -az --progress -h"
 alias rsync-copy="rsync -avz --progress -h"
 alias rsync-move="rsync -avz --progress -h --remove-source-files"
 alias rsync-update="rsync -avzu --progress -h"
@@ -48,6 +49,7 @@ alias -g NUL="> /dev/null 2>&1"
 alias -g R='| rg'
 alias -g S='| sort'
 alias -g SN='| sort -n'
+alias -g SH='| sort -h'
 alias -g SNR='| sort -nr'
 alias -g TL='| tail -20'
 alias -g VM='/var/log/messages'
@@ -71,7 +73,7 @@ alias rd=rmdir
 alias d='dirs -v | head -10'
 
 # List directory contents
-alias ls='exa'
+# alias ls='exa'
 alias l='exa -la'
 alias la='exa -lah'
 alias ll='exa -lah'
@@ -80,3 +82,18 @@ alias a='fasd -a'        # any
 alias s='fasd -si'       # show / search / select
 alias d='fasd -d'        # directory
 alias f='fasd -f'        # file
+
+function duls {
+    paste <( du -hs -- "$@" | cut -f1 ) <( ls -ld -- "$@" )
+}
+
+# Show disk size of subdirs. A bit janky but it works.
+alias daisy="find . -type d -print 2>/dev/null | fzf-tmux --preview 'du -sh {}/* | sort -hr'"
+
+which_port () {
+  lsof -nP "-i4TCP:$1" | grep LISTEN
+}
+
+# Github README preview
+
+alias readme='vmd README.md'
