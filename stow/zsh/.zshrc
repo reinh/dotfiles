@@ -27,3 +27,7 @@ fi
 . ~/.zsh/nvm.zsh
 
 [[ $PROFILE_STARTUP = 1 ]] && zprof
+
+# Set Spaceship ZSH as a prompt
+autoload -U promptinit; promptinit
+prompt spaceship
