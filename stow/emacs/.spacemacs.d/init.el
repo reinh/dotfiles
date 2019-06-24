@@ -55,7 +55,8 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      github
-     markdown
+
+     (markdown :variables markdown-live-preview-engine 'vmd)
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -66,8 +67,22 @@ This function should only modify configuration layer settings."
      command-log
      bm
      fasd
+     dash
+     themes-megapack
+     copy-as-format
+     colors
+     epub
+     ietf
+     multiple-cursors
+     spotify
+     speed-reading
+     templates
+     typography
+     unicode-fonts
 
      evil-commentary
+
+     emoji
 
      treemacs
      ranger
@@ -77,6 +92,8 @@ This function should only modify configuration layer settings."
      vagrant
 
      osx
+
+     lsp
 
      ;; gtags
      (gtags :disabled-for elixir emacs-lisp java ruby rust javascript)
@@ -93,9 +110,18 @@ This function should only modify configuration layer settings."
      (org :variables
           org-enable-github-support t
           org-enable-reveal-js-support t
-          org-want-todo-bindings t)
+          org-want-todo-bindings t
+          org-enable-org-journal-support t
+          org-journal-dir "~/org/journal"
+          org-enable-hugo-support t
+          org-projectile-file "~/org/projects.org"
+          )
 
-     haskell
+     (haskell :variables
+              haskell-process-type 'stack-ghci
+              haskell-completion-backend 'dante
+              haskell-enable-hindent t
+              )
 
      (javascript :variables
                  javascript-backend 'tern
@@ -141,6 +167,10 @@ This function should only modify configuration layer settings."
      (plantuml :variables
                plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.11/libexec/plantuml.jar"
                org-plantuml-jar-path "/usr/local/Cellar/plantuml/1.2018.11/libexec/plantuml.jar")
+
+     ;; My Layers
+
+     org-dnd
      )
 
    ;; List of additional packages that will be installed without being
@@ -273,7 +303,9 @@ It should only modify the values of Spacemacs settings."
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+                         spacemacs-light
+                         material
+                         material-light)
 
    ;; Set the theme for the Spaceline. Supported themes are `spacemacs',
    ;; `all-the-icons', `custom', `vim-powerline' and `vanilla'. The first three
@@ -291,9 +323,10 @@ It should only modify the values of Spacemacs settings."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '(
-                               "Iosevka"
+                               ;; "Iosevka"
                                ;; "Source Code Pro"
-                               :size 18
+                               "Fira Code"
+                               :size 16
                                :weight normal
                                :width normal)
 
@@ -503,7 +536,7 @@ It should only modify the values of Spacemacs settings."
    ;; `trailing' to delete only the whitespace at end of lines, `changed' to
    ;; delete only whitespace for changed lines or `nil' to disable cleanup.
    ;; (default nil)
-   dotspacemacs-whitespace-cleanup 'all
+   dotspacemacs-whitespace-cleanup 'changed
 
    ;; Either nil or a number of seconds. If non-nil zone out after the specified
    ;; number of seconds. (default nil)
