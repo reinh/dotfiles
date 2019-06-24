@@ -590,18 +590,93 @@ before packages are loaded."
 This is an auto-generated function, do not modify its content directly, use
 Emacs customize menu instead.
 This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (plantuml-mode yasnippet-snippets yaml-mode xterm-color ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe vagrant-tramp vagrant uuidgen use-package unfill treemacs-projectile treemacs-evil toml-mode toc-org tide tagedit symon string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv ranger rainbow-delimiters racer pug-mode proof-general projectile-rails prettier-js popwin persp-mode password-generator paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-ref org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-http ob-elixir nameless mwim multi-term move-text mmm-mode minitest markdown-toc magithub magit-svn magit-gitflow magit-gh-pulls magic-latex-buffer macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator js2-refactor js-doc intero indent-guide impatient-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-theme github-search github-modern-theme github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fuzzy font-lock+ flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-mix flycheck-haskell flycheck-gometalinter flycheck-credo flx-ido fill-column-indicator feature-mode fasd fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erlang emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline dockerfile-mode docker disaster diminish diff-hl dante dactyl-mode csv-mode counsel-projectile company-web company-tern company-statistics company-rtags company-quickhelp company-lua company-go company-ghci company-ghc company-coq company-cabal company-c-headers company-auctex command-log-mode column-enforce-mode cmm-mode clean-aindent-mode clang-format chruby centered-cursor-mode cargo bundler browse-at-remote bm auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk ascii-art-to-unicode alchemist aggressive-indent add-node-modules-path ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+  (custom-set-variables
+   ;; custom-set-variables was added by Custom.
+   ;; If you edit it by hand, you could mess it up, so be careful.
+   ;; Your init file should contain only one such instance.
+   ;; If there is more than one, they won't work right.
+   '(TeX-engine (quote xetex))
+   '(agda2-highlight-face-groups (quote conor))
+   '(agda2-highlight-level (quote non-interactive))
+   '(ansi-color-faces-vector
+     [default bold shadow italic underline bold bold-italic bold])
+   '(ansi-term-color-vector
+     [unspecified "#1F1611" "#660000" "#144212" "#EFC232" "#5798AE" "#BE73FD" "#93C1BC" "#E6E1DC"] t)
+   '(company-quickhelp-color-background "#b0b0b0")
+   '(company-quickhelp-color-foreground "#232333")
+   '(evil-want-Y-yank-to-eol nil)
+   '(fci-rule-character-color "#452E2E")
+   '(fci-rule-color "#6a737d")
+   '(hl-sexp-background-color "#efebe9")
+   '(hl-todo-keyword-faces
+     (quote
+      (("TODO" . "#dc752f")
+       ("NEXT" . "#dc752f")
+       ("THEM" . "#2d9574")
+       ("PROG" . "#3a81c3")
+       ("OKAY" . "#3a81c3")
+       ("DONT" . "#f2241f")
+       ("FAIL" . "#f2241f")
+       ("DONE" . "#42ae2c")
+       ("NOTE" . "#b1951d")
+       ("KLUDGE" . "#b1951d")
+       ("HACK" . "#b1951d")
+       ("TEMP" . "#b1951d")
+       ("FIXME" . "#dc752f")
+       ("XXX" . "#dc752f")
+       ("XXXX" . "#dc752f"))))
+   '(jdee-db-active-breakpoint-face-colors (cons "#1B2229" "#fd971f"))
+   '(jdee-db-requested-breakpoint-face-colors (cons "#1B2229" "#b6e63e"))
+   '(jdee-db-spec-breakpoint-face-colors (cons "#1B2229" "#525254"))
+   '(linum-format " %5i ")
+   '(nrepl-message-colors
+     (quote
+      ("#032f62" "#6a737d" "#d73a49" "#6a737d" "#005cc5" "#6f42c1" "#d73a49" "#6a737d")))
+   '(objed-cursor-color "#e74c3c")
+   '(org-agenda-files (quote ("~/Dropbox/org/todo.org")))
+   '(org-modules
+     (quote
+      (org-bbdb org-bibtex org-docview org-eww org-gnus org-habit org-id org-info org-irc org-mhe org-rmail org-w3m)))
+   '(package-selected-packages
+     (quote
+      (vmd-mode ox-dnd yatemplate unicode-fonts ucs-utils font-utils typo spray spotify rebox2 persistent-soft list-utils ox-rfc nov esxml ietf-docs helm-spotify-plus multi evil-mc rainbow-mode rainbow-identifiers color-identifiers-mode copy-as-format zen-and-art-theme white-sand-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme rebecca-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme kaolin-themes jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme eziam-theme exotica-theme espresso-theme dracula-theme doom-themes django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme helm-dash dash-at-point ox-hugo yasnippet-snippets yaml-mode xterm-color ws-butler writeroom-mode winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe vagrant-tramp vagrant uuidgen use-package unfill treemacs-projectile treemacs-evil toml-mode toc-org tide tagedit symon string-inflection stickyfunc-enhance srefactor sql-indent spaceline-all-the-icons smeargle slim-mode shell-pop seeing-is-believing scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv ranger rainbow-delimiters racer pug-mode proof-general projectile-rails prettier-js popwin plantuml-mode persp-mode password-generator paradox ox-reveal ox-gfm overseer osx-trash osx-dictionary orgit org-ref org-projectile org-present org-pomodoro org-mime org-journal org-download org-bullets org-brain open-junk-file ob-http ob-elixir nameless mwim multi-term move-text mmm-mode minitest markdown-toc magithub magit-svn magit-gitflow magit-gh-pulls magic-latex-buffer macrostep lorem-ipsum livid-mode link-hint launchctl json-navigator js2-refactor js-doc indent-guide impatient-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-rtags helm-purpose helm-projectile helm-org-rifle helm-mode-manager helm-make helm-hoogle helm-gtags helm-gitignore helm-git-grep helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-impl go-guru go-gen-test go-fill-struct go-eldoc gnuplot gitignore-templates github-theme github-search github-modern-theme github-clone gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gist gh-md ggtags fuzzy font-lock+ flyspell-correct-helm flycheck-rust flycheck-rtags flycheck-pos-tip flycheck-mix flycheck-haskell flycheck-gometalinter flycheck-credo flx-ido fill-column-indicator feature-mode fasd fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-org evil-numbers evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-goggles evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help erlang emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump dotenv-mode doom-modeline dockerfile-mode docker disaster diminish diff-hl dactyl-mode csv-mode counsel-projectile company-web company-tern company-statistics company-rtags company-quickhelp company-lua company-go company-ghci company-emoji company-coq company-cabal company-c-headers company-auctex command-log-mode column-enforce-mode cmm-mode clean-aindent-mode clang-format chruby centered-cursor-mode cargo bundler browse-at-remote bm auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile auctex-latexmk ascii-art-to-unicode alchemist aggressive-indent add-node-modules-path ace-link ace-jump-helm-line ac-ispell)))
+   '(pdf-view-midnight-colors (quote ("#655370" . "#fbf8ef")))
+   '(plantuml-jar-path "/usr/local/Cellar/plantuml/1.2019.1/libexec/plantuml.jar" t)
+   '(ruby-refactor-add-parens t)
+   '(ruby-refactor-let-position (quote closest))
+   '(safe-local-variable-values
+     (quote
+      ((projectile-enable-caching . t)
+       (magit-refresh-status-buffer)
+       (org-enforce-todo-dependencies . t)
+       (projectile-enable-caching t)
+       (typescript-backend . tide)
+       (typescript-backend . lsp)
+       (javascript-backend . tern)
+       (javascript-backend . lsp)
+       (go-backend . go-mode)
+       (go-backend . lsp)
+       (elixir-enable-compilation-checking . t)
+       (elixir-enable-compilation-checking))))
+   '(vc-annotate-background "#3390ff")
+   '(vc-annotate-color-map
+     (quote
+      ((20 . "#6a737d")
+       (40 . "#032f62")
+       (60 . "#6a737d")
+       (80 . "#6a737d")
+       (100 . "#6a737d")
+       (120 . "#d73a49")
+       (140 . "#6a737d")
+       (160 . "#6a737d")
+       (180 . "#6a737d")
+       (200 . "#6a737d")
+       (220 . "#22863a")
+       (240 . "#005cc5")
+       (260 . "#6f42c1")
+       (280 . "#6a737d")
+       (300 . "#005cc5")
+       (320 . "#6a737d")
+       (340 . "#d73a49")
+       (360 . "#6a737d"))))
+   '(vc-annotate-very-old-color "#6a737d")))
